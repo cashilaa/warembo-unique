@@ -7,8 +7,7 @@ import Link from 'next/link'
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-}
+};
 
 const stagger = {
   animate: {
@@ -16,7 +15,7 @@ const stagger = {
       staggerChildren: 0.1
     }
   }
-}
+};
 
 export default function Services() {
   return (
@@ -26,6 +25,7 @@ export default function Services() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Add transition here
       >
         What We Offer
       </motion.h1>
@@ -69,7 +69,7 @@ export default function Services() {
               description: "We organize events, support groups, and networking opportunities to foster a strong, supportive community.", 
               image: "/placeholder.svg?height=200&width=300"
             }
-          ].map((service, index) => (
+          ].map((service) => (
             <motion.div 
               key={service.title}
               className="bg-white p-6 rounded-lg shadow-lg"
@@ -147,9 +147,9 @@ export default function Services() {
         className="mb-12"
         initial="initial"
         animate="animate"
-        variants={stagger}
+        variants={fadeIn}
       >
-        <motion.h2 variants={fadeIn} className="text-3xl font-semibold mb-6 text-teal-600 text-center">How to Access Our Services</motion.h2>
+        <h2 className="text-3xl font-semibold mb-6 text-teal-600 text-center">How to Access Our Services</h2>
         <motion.div variants={fadeIn} className="bg-white p-8 rounded-lg shadow-lg">
           <p className="text-lg mb-4">
             All of our services are confidential and designed to be accessible to everyone in our community. To access our services or learn more about what we offer:
@@ -190,4 +190,3 @@ export default function Services() {
     </div>
   )
 }
-
