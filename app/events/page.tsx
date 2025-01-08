@@ -6,8 +6,7 @@ import Link from 'next/link'
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-}
+};
 
 const events = [
   {
@@ -52,6 +51,7 @@ export default function Events() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Add transition here
       >
         Upcoming Events
       </motion.h1>
@@ -64,6 +64,7 @@ export default function Events() {
             initial="initial"
             animate="animate"
             variants={fadeIn}
+            transition={{ duration: 0.5 }} // Add transition here
           >
             <h2 className="text-2xl font-semibold mb-2 text-purple-600">{event.title}</h2>
             <p className="text-gray-600 mb-2"><strong>Date:</strong> {event.date}</p>
@@ -82,6 +83,7 @@ export default function Events() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Add transition here
       >
         <h2 className="text-2xl font-semibold mb-4">Want to Host an Event?</h2>
         <p className="mb-4">
@@ -95,4 +97,3 @@ export default function Events() {
     </div>
   )
 }
-
