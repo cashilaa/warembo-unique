@@ -7,7 +7,7 @@ const fadeIn = {
   animate: { opacity: 1, y: 0 },
 };
 
-export default function Volunteer() {
+export default function Terms() {
   return (
     <div className="container mx-auto px-4">
       <motion.h1 
@@ -15,14 +15,14 @@ export default function Volunteer() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
-        transition={{ duration: 0.5 }} // Move transition here
+        transition={{ duration: 0.5 }}
       >
-        Volunteer with Us
+        Terms and Conditions
       </motion.h1>
       <p className="text-lg mb-4">
-        We are always looking for passionate individuals to join our team of dedicated volunteers. Your support makes a real difference in the lives of those we serve.
+        Please read these terms and conditions carefully before using our services.
       </p>
-      {/* Add a form or further details here */}
+      {/* Add terms and conditions content here */}
     </div>
   );
 }

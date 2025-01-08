@@ -7,7 +7,7 @@ const fadeIn = {
   animate: { opacity: 1, y: 0 },
 };
 
-export default function Terms() {
+export default function Donate() {
   return (
     <div className="container mx-auto px-4">
       <motion.h1 
@@ -15,14 +15,14 @@ export default function Terms() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
-        transition={{ duration: 0.5 }} // Move transition here
+        transition={{ duration: 0.5 }}
       >
-        Terms and Conditions
+        Make a Donation
       </motion.h1>
       <p className="text-lg mb-4">
-        Please read these terms and conditions carefully before using our services.
+        Your financial support helps us continue our vital work. Every contribution, no matter how small, makes a difference in the lives of those we serve.
       </p>
-      {/* Add terms and conditions content here */}
+      {/* Add donation link or button here */}
     </div>
   );
 }

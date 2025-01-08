@@ -7,7 +7,7 @@ const fadeIn = {
   animate: { opacity: 1, y: 0 },
 };
 
-export default function Donate() {
+export default function Volunteer() {
   return (
     <div className="container mx-auto px-4">
       <motion.h1 
@@ -15,14 +15,14 @@ export default function Donate() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
-        transition={{ duration: 0.5 }} // Move transition here
+        transition={{ duration: 0.5 }}
       >
-        Make a Donation
+        Volunteer with Us
       </motion.h1>
       <p className="text-lg mb-4">
-        Your financial support helps us continue our vital work. Every contribution, no matter how small, makes a difference in the lives of those we serve.
+        We are always looking for passionate individuals to join our team of dedicated volunteers. Your support makes a real difference in the lives of those we serve.
       </p>
-      {/* Add donation link or button here */}
+      {/* Add a form or further details here */}
     </div>
   );
 }
