@@ -1,13 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
 
-const fadeIn = {
+const fadeIn: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-}
+  animate: { opacity: 1, y: 0 }
+};
 
 const blogPosts = [
   {
@@ -42,12 +41,13 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <motion.h1 
         className="text-4xl font-bold mb-8 text-purple-700 text-center"
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }}
       >
         Blog
       </motion.h1>
@@ -60,6 +60,7 @@ export default function Blog() {
             initial="initial"
             animate="animate"
             variants={fadeIn}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl font-semibold mb-2 text-purple-600">{post.title}</h2>
             <p className="text-gray-600 mb-4">By {post.author} | {post.date}</p>
@@ -76,6 +77,7 @@ export default function Blog() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-semibold mb-4">Want to Contribute?</h2>
         <p className="mb-4">
