@@ -1,45 +1,102 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const Footer = () => {
+  const quickLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About Us' },
+    { href: '/services', label: 'What We Offer' },
+    { href: '/contact', label: 'Contact Us' },
+    { href: '/faq', label: 'FAQ' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/events', label: 'Events' }
+  ]
+
+  const contactInfo = [
+    { label: 'Email', value: 'contact@warembo.org' },
+    { label: 'Phone', value: '+254 123 456 789' },
+    { label: 'Address', value: 'Nairobi, Kenya' }
+  ]
+
   return (
-    <footer className="bg-gray-800 text-white p-8 mt-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h3 className="text-xl font-bold mb-4">WaremboUniqueOrg</h3>
-          <p>Supporting and empowering individuals through advocacy, resources, and community.</p>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="footer-section"
+          >
+            <h3 className="footer-title">WaremboUniqueOrg</h3>
+            <p className="footer-text">Supporting and empowering individuals through advocacy, resources, and community.</p>
+            <div className="social-links">
+              <a href="#" className="social-link" aria-label="Facebook">
+                <i className="fab fa-facebook"></i>
+              </a>
+              <a href="#" className="social-link" aria-label="Twitter">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" className="social-link" aria-label="Instagram">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="footer-section"
+          >
+            <h3 className="footer-title">Quick Links</h3>
+            <ul className="footer-links">
+              {quickLinks.map((link) => (
+                <motion.li 
+                  key={link.href}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link href={link.href} className="footer-link">
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="footer-section"
+          >
+            <h3 className="footer-title">Contact Us</h3>
+            <ul className="footer-contact">
+              {contactInfo.map((info) => (
+                <li key={info.label} className="contact-item">
+                  <strong>{info.label}:</strong> {info.value}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
-        <div>
-          <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><Link href="/" className="hover:text-teal-300 transition-colors">Home</Link></li>
-            <li><Link href="/about" className="hover:text-teal-300 transition-colors">About Us</Link></li>
-            <li><Link href="/services" className="hover:text-teal-300 transition-colors">What We Offer</Link></li>
-            <li><Link href="/contact" className="hover:text-teal-300 transition-colors">Contact Us</Link></li>
-            <li><Link href="/faq" className="hover:text-teal-300 transition-colors">FAQ</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
-          <ul className="space-y-2">
-            <li>Email: contact@waremboorg.com</li>
-            <li>Phone: (555) 123-4567</li>
-            <li>Address: PO Box 12345, City, State, ZIP</li>
-          </ul>
-        </div>
-      </div>
-      <div className="container mx-auto mt-8 pt-8 border-t border-gray-700 text-center">
-        <p>&copy; 2023 WaremboUniqueOrg. All rights reserved.</p>
-        <nav className="mt-4">
-          <ul className="flex justify-center space-x-4">
-            <li><Link href="/privacy" className="hover:text-teal-300 transition-colors">Privacy Policy</Link></li>
-            <li><Link href="/terms" className="hover:text-teal-300 transition-colors">Terms of Service</Link></li>
-            <li><Link href="/safety" className="hover:text-teal-300 transition-colors">Safety Tips</Link></li>
-          </ul>
-        </nav>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="footer-bottom"
+        >
+          <p className="copyright">
+            {new Date().getFullYear()} WaremboUniqueOrg. All rights reserved.
+          </p>
+        </motion.div>
       </div>
     </footer>
   )
 }
 
 export default Footer
-
