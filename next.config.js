@@ -1,5 +1,10 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    domains: ['warembo-unique.onrender.com'],
+    unoptimized: true,
+  },
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
