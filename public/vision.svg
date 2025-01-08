@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f0f9f9"/>
+  
+  <!-- Rising Sun -->
+  <circle cx="200" cy="200" r="120" fill="#0d9488" opacity="0.1"/>
+  <path d="M200 80 L200 40 M160 90 L140 60 M240 90 L260 60 M120 120 L90 100 M280 120 L310 100" 
+        stroke="#0d9488" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Bridge Symbol -->
+  <path d="M80 180 Q200 120 320 180" stroke="#0d9488" stroke-width="6" fill="none"/>
+  
+  <!-- People on Bridge -->
+  <g transform="translate(140, 140)">
+    <circle cx="0" cy="0" r="10" fill="#0d9488"/>
+    <path d="M0 12 L0 30 M-8 20 L8 20" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(200, 155)">
+    <circle cx="0" cy="0" r="10" fill="#0d9488"/>
+    <path d="M0 12 L0 30 M-8 20 L8 20" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(260, 140)">
+    <circle cx="0" cy="0" r="10" fill="#0d9488"/>
+    <path d="M0 12 L0 30 M-8 20 L8 20" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Stars -->
+  <g fill="#0d9488">
+    <circle cx="100" cy="80" r="3"/>
+    <circle cx="300" cy="80" r="3"/>
+    <circle cx="200" cy="60" r="3"/>
+    <circle cx="150" cy="100" r="3"/>
+    <circle cx="250" cy="100" r="3"/>
+  </g>
+</svg>

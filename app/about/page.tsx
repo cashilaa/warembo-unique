@@ -50,11 +50,11 @@ export default function About() {
           </div>
           <div className="md:w-1/2">
             <Image 
-              src="/placeholder.svg" 
+              src="/mission.svg" 
               alt="WaremboUniqueOrg team in action" 
               width={400} 
               height={300} 
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg bg-white"
               priority
             />
           </div>
@@ -83,11 +83,11 @@ export default function About() {
           </div>
           <div className="md:w-1/2">
             <Image 
-              src="/placeholder.svg" 
+              src="/vision.svg" 
               alt="Diverse group of people representing our vision" 
               width={400} 
               height={300} 
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg bg-white"
               priority
             />
           </div>
@@ -180,4 +180,3 @@ export default function About() {
     </div>
   )
 }
-

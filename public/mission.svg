@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f0f9f9"/>
+  
+  <!-- Community Circle -->
+  <circle cx="200" cy="150" r="80" fill="#0d9488" opacity="0.1"/>
+  
+  <!-- People Symbols -->
+  <g transform="translate(160, 110)" fill="#0d9488">
+    <!-- Center Person -->
+    <circle cx="40" cy="40" r="15"/>
+    <path d="M40 60 L40 90 M25 75 L55 75" stroke="#0d9488" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Surrounding People -->
+    <g transform="rotate(0 40 40)">
+      <circle cx="80" cy="40" r="12"/>
+      <path d="M80 55 L80 75 M70 65 L90 65" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(120 40 40)">
+      <circle cx="80" cy="40" r="12"/>
+      <path d="M80 55 L80 75 M70 65 L90 65" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(240 40 40)">
+      <circle cx="80" cy="40" r="12"/>
+      <path d="M80 55 L80 75 M70 65 L90 65" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- Connecting Lines -->
+  <g stroke="#0d9488" stroke-width="2" opacity="0.5">
+    <path d="M200 150 L280 150"/>
+    <path d="M200 150 L160 220"/>
+    <path d="M200 150 L160 80"/>
+  </g>
+</svg>
