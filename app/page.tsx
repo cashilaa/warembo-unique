@@ -8,8 +8,7 @@ import { useState } from 'react'
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-}
+};
 
 const stagger = {
   animate: {
@@ -17,7 +16,7 @@ const stagger = {
       staggerChildren: 0.1
     }
   }
-}
+};
 
 export default function Home() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
@@ -30,8 +29,22 @@ export default function Home() {
         animate="animate"
         variants={stagger}
       >
-        <motion.h1 variants={fadeIn} className="text-5xl font-bold mb-4 text-teal-700">Welcome to WaremboUniqueOrg</motion.h1>
-        <motion.p variants={fadeIn} className="text-xl mb-8 max-w-2xl mx-auto">
+        <motion.h1 
+          variants={fadeIn} 
+          className="text-5xl font-bold mb-4 text-teal-700"
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5 }} // Add transition here
+        >
+          Welcome to WaremboUniqueOrg
+        </motion.h1>
+        <motion.p 
+          variants={fadeIn} 
+          className="text-xl mb-8 max-w-2xl mx-auto"
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5 }} // Add transition here
+        >
           Empowering individuals through advocacy, resources, and community support. Together, we can create a world of equality and respect.
         </motion.p>
         <motion.div variants={fadeIn} className="space-x-4">
@@ -50,12 +63,18 @@ export default function Home() {
         animate="animate"
         variants={stagger}
       >
-        <motion.h2 variants={fadeIn} className="text-3xl font-bold mb-6 text-center text-teal-600">Our Impact</motion.h2>
+        <motion.h2 
+          variants={fadeIn} 
+          className="text-3xl font-bold mb-6 text-center text-teal-600"
+        >
+          Our Impact
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div 
             className="bg-white p-6 rounded-lg shadow-lg text-center"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
+            variants={fadeIn}
           >
             <Image src="/placeholder.svg?height=100&width=100" alt="Community icon" width={100} height={100} className="mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2 text-teal-600">5000+</h3>
@@ -65,6 +84,7 @@ export default function Home() {
             className="bg-white p-6 rounded-lg shadow-lg text-center"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
+            variants={fadeIn}
           >
             <Image src="/placeholder.svg?height=100&width=100" alt="Event icon" width={100} height={100} className="mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2 text-teal-600">200+</h3>
@@ -74,6 +94,7 @@ export default function Home() {
             className="bg-white p-6 rounded-lg shadow-lg text-center"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
+            variants={fadeIn}
           >
             <Image src="/placeholder.svg?height=100&width=100" alt="Advocacy icon" width={100} height={100} className="mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2 text-teal-600">50+</h3>
@@ -206,4 +227,3 @@ export default function Home() {
     </div>
   )
 }
-
