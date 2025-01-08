@@ -15,15 +15,12 @@ export default function Donate() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Move transition here
       >
         Make a Donation
       </motion.h1>
       <p className="text-lg mb-4">
-        Your financial support helps us continue our vital work. Every contribution, no matter how small, 
-        makes a difference in the lives of those we serve.
-      </p>
-      <p className="text-lg mb-4">
-        Click the button below to make a donation.
+        Your financial support helps us continue our vital work. Every contribution, no matter how small, makes a difference in the lives of those we serve.
       </p>
       {/* Add donation link or button here */}
     </div>

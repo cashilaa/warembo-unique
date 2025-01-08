@@ -15,6 +15,7 @@ export default function Terms() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Move transition here
       >
         Terms and Conditions
       </motion.h1>

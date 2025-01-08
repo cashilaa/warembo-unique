@@ -15,15 +15,12 @@ export default function Volunteer() {
         initial="initial"
         animate="animate"
         variants={fadeIn}
+        transition={{ duration: 0.5 }} // Move transition here
       >
         Volunteer with Us
       </motion.h1>
       <p className="text-lg mb-4">
-        We are always looking for passionate individuals to join our team of dedicated volunteers. 
-        Your support makes a real difference in the lives of those we serve.
-      </p>
-      <p className="text-lg mb-4">
-        Fill out the form below to express your interest in volunteering with WaremboUniqueOrg.
+        We are always looking for passionate individuals to join our team of dedicated volunteers. Your support makes a real difference in the lives of those we serve.
       </p>
       {/* Add a form or further details here */}
     </div>
