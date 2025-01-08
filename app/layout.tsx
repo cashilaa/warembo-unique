@@ -18,12 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50 text-gray-900`}>
+      <body className={`${inter.className} min-h-screen bg-background text-gray-900 flex flex-col`}>
         <Header />
-        <AnimatedMain>{children}</AnimatedMain>
+        <main className="flex-grow">
+          <AnimatedMain>{children}</AnimatedMain>
+        </main>
         <Footer />
       </body>
     </html>
   )
 }
-
