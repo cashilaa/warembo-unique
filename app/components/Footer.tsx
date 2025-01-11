@@ -11,7 +11,7 @@ const Footer = () => {
     { href: '/contact', label: 'Contact Us' },
     { href: '/faq', label: 'FAQ' },
     { href: '/blog', label: 'Blog' },
-    { href: '/events', label: 'Events' }
+    { href: '/gallery', label: 'Gallery' }
   ]
 
   const contactInfo = [
@@ -23,25 +23,32 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-grid">
+        <div className="footer-container">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="footer-section"
           >
-            <h3 className="footer-title">WaremboUniqueOrg</h3>
-            <p className="footer-text">Supporting and empowering individuals through advocacy, resources, and community.</p>
+            <h4>WaremboUniqueOrg</h4>
+            <p>Supporting and empowering individuals through advocacy, resources, and community.</p>
             <div className="social-links">
-              <a href="#" className="social-link" aria-label="Facebook">
-                <i className="fab fa-facebook"></i>
-              </a>
-              <a href="#" className="social-link" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-link" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
+              {[
+                { icon: 'facebook', href: 'https://facebook.com/warembo', label: 'Facebook' },
+                { icon: 'twitter', href: 'https://twitter.com/warembo', label: 'Twitter' },
+                { icon: 'instagram', href: 'https://instagram.com/warembo', label: 'Instagram' }
+              ].map((social) => (
+                <a 
+                  key={social.icon} 
+                  href={social.href} 
+                  className="social-link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  <i className={`fab fa-${social.icon}`}></i>
+                </a>
+              ))}
             </div>
           </motion.div>
 
@@ -51,10 +58,10 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="footer-section"
           >
-            <h3 className="footer-title">Quick Links</h3>
-            <ul className="footer-links">
+            <h4>Quick Links</h4>
+            <div className="footer-links">
               {quickLinks.map((link) => (
-                <motion.li 
+                <motion.div 
                   key={link.href}
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
@@ -62,9 +69,9 @@ const Footer = () => {
                   <Link href={link.href} className="footer-link">
                     {link.label}
                   </Link>
-                </motion.li>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -73,14 +80,17 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="footer-section"
           >
-            <h3 className="footer-title">Contact Us</h3>
-            <ul className="footer-contact">
+            <h4>Contact Us</h4>
+            <div className="footer-contact">
               {contactInfo.map((info) => (
-                <li key={info.label} className="contact-item">
+                <div key={info.label} className="contact-item">
                   <strong>{info.label}:</strong> {info.value}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
+            <Link href="/contact" className="btn btn-secondary mt-4">
+              Get in Touch
+            </Link>
           </motion.div>
         </div>
 
@@ -90,9 +100,13 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="footer-bottom"
         >
-          <p className="copyright">
-            {new Date().getFullYear()} WaremboUniqueOrg. All rights reserved.
+          <p>
+            {new Date().getFullYear()} WaremboUniqueOrg. All Rights Reserved.
           </p>
+          <div className="footer-legal-links">
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+          </div>
         </motion.div>
       </div>
     </footer>

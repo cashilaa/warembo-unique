@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 const faqs = [
   {
@@ -42,32 +43,33 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container section">
       <motion.h1 
-        className="text-4xl font-bold mb-8 text-teal-700 text-center"
+        className="text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         Frequently Asked Questions
       </motion.h1>
-      <div className="space-y-4">
+      <div className="faq-accordion">
         {faqs.map((faq, index) => (
           <motion.div 
             key={index}
+            className={`faq-item ${openIndex === index ? 'active' : ''}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <button
-              className="flex justify-between items-center w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-teal-50 transition-colors duration-200"
+            <div 
+              className="faq-question"
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
             >
-              <span className="text-lg font-semibold text-teal-700">{faq.question}</span>
-              <span className="text-2xl text-teal-600">
+              <span>{faq.question}</span>
+              <span className="faq-toggle">
                 {openIndex === index ? '−' : '+'}
               </span>
-            </button>
+            </div>
             <AnimatePresence>
               {openIndex === index && (
                 <motion.div
@@ -75,9 +77,9 @@ export default function FAQ() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-teal-50 p-4 rounded-b-lg mt-1"
+                  className="faq-answer"
                 >
-                  <p className="text-gray-700">{faq.answer}</p>
+                  <p>{faq.answer}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -90,15 +92,15 @@ export default function FAQ() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.8 }}
       >
-        <p className="text-lg text-gray-700 mb-4">
+        <p className="mb-4">
           Don't see your question here? Feel free to reach out to us directly.
         </p>
-        <a 
+        <Link 
           href="/contact" 
-          className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition-colors duration-200"
+          className="btn btn-secondary"
         >
           Contact Us
-        </a>
+        </Link>
       </motion.div>
     </div>
   )

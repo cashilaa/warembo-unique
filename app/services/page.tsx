@@ -1,192 +1,184 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 export default function Services() {
+  const services = [
+    {
+      title: 'Health Services',
+      description: 'Access to comprehensive healthcare services including regular check-ups, counseling, and wellness programs.',
+      features: [
+        'Regular health check-ups',
+        'Mental health support',
+        'Wellness workshops',
+        'Nutritional guidance'
+      ],
+      icon: '🏥'
+    },
+    {
+      title: 'Legal Support',
+      description: 'Professional legal assistance and advocacy services to protect your rights and interests.',
+      features: [
+        'Legal consultation',
+        'Rights education',
+        'Document assistance',
+        'Advocacy support'
+      ],
+      icon: '⚖️'
+    },
+    {
+      title: 'Education & Training',
+      description: 'Comprehensive educational programs and skill development opportunities for personal growth.',
+      features: [
+        'Vocational training',
+        'Financial literacy',
+        'Digital skills',
+        'Language courses'
+      ],
+      icon: '📚'
+    },
+    {
+      title: 'Community Support',
+      description: 'A strong network of support services and resources for community members.',
+      features: [
+        'Support groups',
+        'Mentorship programs',
+        'Social activities',
+        'Resource sharing'
+      ],
+      icon: '🤝'
+    }
+  ]
+
+  const programs = [
+    {
+      title: 'Skills Development',
+      description: 'Learn valuable skills for personal and professional growth.',
+      schedule: 'Weekly workshops',
+      icon: '💡'
+    },
+    {
+      title: 'Support Groups',
+      description: 'Connect with others in a safe and supportive environment.',
+      schedule: 'Bi-weekly meetings',
+      icon: '👥'
+    },
+    {
+      title: 'Health Workshops',
+      description: 'Learn about health, wellness, and self-care practices.',
+      schedule: 'Monthly sessions',
+      icon: '❤️'
+    }
+  ]
+
   return (
-    <div className="container mx-auto px-4">
-      <motion.h1 
-        className="text-4xl font-bold mb-8 text-teal-700 text-center"
-        initial="initial"
-        animate="animate"
-        variants={fadeIn}
-        transition={{ duration: 0.5 }} // Add transition here
-      >
-        What We Offer
-      </motion.h1>
-      
-      <motion.section 
-        className="mb-12"
-        initial="initial"
-        animate="animate"
-        variants={stagger}
-      >
-        <motion.h2 variants={fadeIn} className="text-3xl font-semibold mb-6 text-teal-600 text-center">Our Services</motion.h2>
-        <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { 
-              title: "Advocacy and Awareness", 
-              description: "We lobby for policy changes, run public education campaigns, and work to reduce stigma through media representation.", 
-              image: "/placeholder.svg?height=200&width=300"
-            },
-            { 
-              title: "Support and Counseling", 
-              description: "Our support services include peer support groups, mental health counseling, and career transition assistance.", 
-              image: "/placeholder.svg?height=200&width=300"
-            },
-            { 
-              title: "Legal Aid", 
-              description: "We provide legal consultations and representation for cases related to discrimination, abuse, and rights violations.", 
-              image: "/placeholder.svg?height=200&width=300"
-            },
-            { 
-              title: "Health Services", 
-              description: "We offer health education, screenings, and referrals to ensure our community has access to comprehensive healthcare.", 
-              image: "/placeholder.svg?height=200&width=300"
-            },
-            { 
-              title: "Education and Training", 
-              description: "Our workshops and training programs cover a wide range of topics, from legal rights to personal development.", 
-              image: "/placeholder.svg?height=200&width=300"
-            },
-            { 
-              title: "Community Building", 
-              description: "We organize events, support groups, and networking opportunities to foster a strong, supportive community.", 
-              image: "/placeholder.svg?height=200&width=300"
-            }
-          ].map((service) => (
-            <motion.div 
-              key={service.title}
-              className="bg-white p-6 rounded-lg shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Image 
-                src={service.image} 
-                alt={service.title} 
-                width={300} 
-                height={200} 
-                className="w-full mb-4 rounded"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-teal-600">{service.title}</h3>
-              <p>{service.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+    <main>
+      {/* Hero Section */}
+      <section className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1>Our Services</h1>
+            <p className="text-lg mb-8">
+              Comprehensive support and resources designed to empower and uplift our community members.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-      <motion.section 
-        className="mb-12"
-        initial="initial"
-        animate="animate"
-        variants={stagger}
-      >
-        <motion.h2 variants={fadeIn} className="text-3xl font-semibold mb-6 text-teal-600 text-center">Upcoming Events</motion.h2>
-        <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { 
-              title: "Know Your Rights Workshop", 
-              date: "July 15, 2023", 
-              description: "Learn about your legal rights and how to protect yourself in various situations." 
-            },
-            { 
-              title: "Mental Health Support Group", 
-              date: "Every Monday", 
-              description: "Join our weekly support group to discuss mental health challenges and coping strategies." 
-            },
-          ].map((event) => (
-            <div key={event.title} className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-2 text-teal-600">{event.title}</h3>
-              <p className="text-gray-600 mb-2">{event.date}</p>
-              <p className="mb-4">{event.description}</p>
-              <Link href="/events" className="text-teal-600 hover:text-teal-800 transition-colors">Learn More →</Link>
-            </div>
-          ))}
-        </motion.div>
-      </motion.section>
-
-      <motion.section 
-        className="mb-12"
-        initial="initial"
-        animate="animate"
-        variants={fadeIn}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-teal-600 text-center">Resources</h2>
-        <div className="bg-teal-50 p-8 rounded-lg shadow-lg">
-          <p className="mb-4 text-lg text-center">
-            We offer a variety of resources to support our community. Check out our online library for educational materials, 
-            guides, and helpful links.
-          </p>
-          <div className="flex justify-center">
-            <Link 
-              href="/resources" 
-              className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition-colors"
-            >
-              Access Resources
-            </Link>
+      {/* Services Section */}
+      <section className="section">
+        <div className="container">
+          <div className="grid grid-2">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="card"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p className="mb-4">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature) => (
+                    <motion.li
+                      key={feature}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center gap-2"
+                    >
+                      <span className="text-primary">•</span>
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section 
-        className="mb-12"
-        initial="initial"
-        animate="animate"
-        variants={fadeIn}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-teal-600 text-center">How to Access Our Services</h2>
-        <motion.div variants={fadeIn} className="bg-white p-8 rounded-lg shadow-lg">
-          <p className="text-lg mb-4">
-            All of our services are confidential and designed to be accessible to everyone in our community. To access our services or learn more about what we offer:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            <li>Visit our office during drop-in hours (check our Events page for current schedule)</li>
-            <li>Call our confidential helpline: (555) 123-4567</li>
-            <li>Email us at support@waremboorg.com</li>
-            <li>Attend one of our community events or workshops</li>
-          </ul>
-          <p className="text-lg mt-4">
-            Remember, your privacy and safety are our top priorities. All interactions with WaremboUniqueOrg are kept 
-            strictly confidential.
-          </p>
-        </motion.div>
-      </motion.section>
-
-      <motion.section 
-        className="mb-12"
-        initial="initial"
-        animate="animate"
-        variants={fadeIn}
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-teal-600 text-center">Get Involved</h2>
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-          <p className="mb-4 text-lg">
-            We're always looking for passionate individuals to join our cause. Whether you want to volunteer your time, 
-            share your skills, or support our work financially, there's a place for you at WaremboUniqueOrg.
-          </p>
-          <Link 
-            href="/get-involved" 
-            className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition-colors"
+      {/* Programs Section */}
+      <section className="section">
+        <div className="container">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center mb-12"
           >
-            Learn How to Get Involved
-          </Link>
+            Current Programs
+          </motion.h2>
+          <div className="grid grid-3">
+            {programs.map((program, index) => (
+              <motion.div
+                key={program.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="card text-center"
+              >
+                <div className="text-4xl mb-4">{program.icon}</div>
+                <h3>{program.title}</h3>
+                <p className="mb-4">{program.description}</p>
+                <div className="text-primary font-medium">{program.schedule}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </motion.section>
-    </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="card text-center"
+          >
+            <h2>Need Support?</h2>
+            <p className="mb-8">
+              We're here to help. Contact us to learn more about our services
+              and how we can support you on your journey.
+            </p>
+            <motion.a
+              href="/contact"
+              className="btn btn-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Us
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   )
 }

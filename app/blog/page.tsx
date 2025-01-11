@@ -2,6 +2,7 @@
 
 import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const fadeIn: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -20,65 +21,186 @@ const blogPosts = [
   {
     id: 1,
     title: "Understanding Sex Work Decriminalization",
-    excerpt: "An in-depth look at what decriminalization means for sex workers and society at large.",
-    date: "June 15, 2023",
-    author: "Jane Doe"
+    excerpt: "A comprehensive exploration of decriminalization, its global implications, and the path to protecting sex workers' rights.",
+    fullContent: `Decriminalization is more than a legal term—it's a fundamental human rights issue. This article delves deep into the complexities of sex work legislation, examining how current laws impact the safety, health, and dignity of sex workers worldwide.
+
+Key points:
+- The current global landscape of sex work laws
+- Health and safety risks under criminalization
+- Economic and social impacts of decriminalization
+- International case studies and successful models
+- The role of community advocacy in driving change`,
+    date: "January 15, 2024",
+    author: "Dr. Elena Rodriguez",
+    readTime: "8 min read",
+    tags: ["Policy", "Rights", "Human Rights"],
+    imageUrl: "/blog-images/decriminalization.jpg"
   },
   {
     id: 2,
-    title: "Health and Safety Tips for Sex Workers",
-    excerpt: "Essential guidelines for maintaining physical and mental health in the sex work industry.",
-    date: "June 1, 2023",
-    author: "Dr. Smith"
+    title: "Holistic Health Approaches for Sex Workers",
+    excerpt: "Exploring comprehensive healthcare strategies that address physical, mental, and emotional well-being.",
+    fullContent: `Healthcare for sex workers goes beyond medical check-ups. This article presents a holistic approach that considers the unique challenges and needs of sex workers.
+
+Key focus areas:
+- Mental health support and trauma-informed care
+- Sexual health screenings and preventive care
+- Nutrition and wellness programs
+- Access to confidential and non-judgmental healthcare services
+- Community-based health initiatives`,
+    date: "December 10, 2023",
+    author: "Maria Santos, RN",
+    readTime: "7 min read",
+    tags: ["Health", "Wellness", "Mental Health"],
+    imageUrl: "/blog-images/health-wellness.jpg"
   },
   {
     id: 3,
-    title: "Navigating Financial Services as a Sex Worker",
-    excerpt: "Strategies for managing finances and overcoming banking obstacles in the sex work industry.",
-    date: "May 20, 2023",
-    author: "Alex Johnson"
+    title: "Financial Empowerment and Alternative Careers",
+    excerpt: "Strategies for economic independence, skill development, and exploring diverse career pathways.",
+    fullContent: `Economic empowerment is crucial for sex workers seeking alternative career opportunities. This comprehensive guide offers practical insights and resources.
+
+Comprehensive guide includes:
+- Skills assessment and career counseling
+- Vocational training programs
+- Financial literacy workshops
+- Entrepreneurship support
+- Networking and mentorship opportunities
+- Overcoming systemic barriers to employment`,
+    date: "November 22, 2023",
+    author: "Alex Johnson",
+    readTime: "9 min read",
+    tags: ["Career", "Finance", "Empowerment"],
+    imageUrl: "/blog-images/financial-empowerment.jpg"
   },
   {
     id: 4,
-    title: "The Impact of COVID-19 on Sex Work",
-    excerpt: "Examining the challenges faced by sex workers during the global pandemic and strategies for adaptation.",
-    date: "May 5, 2023",
-    author: "Sam Lee"
+    title: "Community Support and Peer Networks",
+    excerpt: "The transformative power of community support, peer networks, and collective advocacy.",
+    fullContent: `Community is more than a support system—it's a lifeline. This article explores the critical role of peer networks in empowerment and resilience.
+
+Highlights:
+- Building supportive and non-judgmental communities
+- Peer counseling and support group models
+- Collective advocacy and rights protection
+- Combating stigma through solidarity
+- Creating safe spaces for dialogue and healing`,
+    date: "October 5, 2023",
+    author: "Sarah Thompson",
+    readTime: "6 min read",
+    tags: ["Community", "Support", "Advocacy"],
+    imageUrl: "/blog-images/community-support.jpg"
   }
 ]
 
 export default function Blog() {
+  const [filter, setFilter] = useState('All')
+  const [selectedPost, setSelectedPost] = useState<number | null>(null)
+
+  const tags = ['All', ...new Set(blogPosts.flatMap(post => post.tags))]
+
+  const filteredPosts = filter === 'All' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.tags.includes(filter))
+
+  const handlePostClick = (postId: number) => {
+    setSelectedPost(postId)
+  }
+
   return (
-    <div className="container mx-auto px-4">
+    <div className="container section">
       <motion.h1 
-        className="text-4xl font-bold mb-8 text-purple-700 text-center"
+        className="text-center"
         initial="initial"
         animate="animate"
         variants={fadeIn}
         transition={{ duration: 0.5 }}
       >
-        Blog
+        Our Blog
       </motion.h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {blogPosts.map((post) => (
+      <div className="blog-filter">
+        {tags.map(tag => (
+          <button 
+            key={tag}
+            className={`blog-filter-tag ${filter === tag ? 'active' : ''}`}
+            onClick={() => setFilter(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+      
+      <div className="grid grid-3">
+        {filteredPosts.map((post) => (
           <motion.article 
             key={post.id}
-            className="bg-white p-6 rounded-lg shadow-lg"
+            className="blog-post"
             initial="initial"
             animate="animate"
             variants={fadeIn}
             transition={{ duration: 0.5 }}
+            onClick={() => handlePostClick(post.id)}
           >
-            <h2 className="text-2xl font-semibold mb-2 text-purple-600">{post.title}</h2>
-            <p className="text-gray-600 mb-4">By {post.author} | {post.date}</p>
-            <p className="mb-4">{post.excerpt}</p>
-            <Link href={`/blog/${post.id}`} className="text-purple-600 hover:text-purple-800 transition-colors">
-              Read More →
-            </Link>
+            <div className="blog-post-image-container">
+              <img 
+                src={post.imageUrl} 
+                alt={post.title} 
+                className="blog-post-image" 
+              />
+              <div className="blog-post-tags">
+                {post.tags.map(tag => (
+                  <span key={tag} className="blog-post-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div className="blog-post-content">
+              <div className="blog-post-meta">
+                <span className="blog-post-author">{post.author}</span>
+                <span className="blog-post-date">{post.date}</span>
+                <span className="blog-post-read-time">{post.readTime}</span>
+              </div>
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+            </div>
           </motion.article>
         ))}
       </div>
+      
+      {selectedPost !== null && (
+        <motion.div 
+          className="blog-post-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedPost(null)}
+        >
+          <div className="blog-post-modal-content">
+            <button 
+              className="blog-post-modal-close"
+              onClick={() => setSelectedPost(null)}
+            >
+              ✕
+            </button>
+            <div className="blog-post-modal-header">
+              <h2>{blogPosts[selectedPost].title}</h2>
+              <div className="blog-post-modal-meta">
+                <span>{blogPosts[selectedPost].author}</span>
+                <span>{blogPosts[selectedPost].date}</span>
+                <span>{blogPosts[selectedPost].readTime}</span>
+              </div>
+            </div>
+            <img 
+              src={blogPosts[selectedPost].imageUrl} 
+              alt={blogPosts[selectedPost].title} 
+              className="blog-post-modal-image" 
+            />
+            <div className="blog-post-modal-body">
+              <p>{blogPosts[selectedPost].fullContent}</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
       
       <motion.section 
         className="mt-12 text-center"
@@ -87,16 +209,15 @@ export default function Blog() {
         variants={fadeIn}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-semibold mb-4">Want to Contribute?</h2>
+        <h2>Want to Contribute?</h2>
         <p className="mb-4">
           We welcome guest posts from sex workers, allies, and experts in related fields. 
           Share your experiences, insights, and knowledge with our community.
         </p>
-        <Link href="/contact" className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors inline-block">
-          Contact Us to Submit a Post
+        <Link href="/contact" className="btn btn-secondary">
+          Submit a Post
         </Link>
       </motion.section>
     </div>
   )
 }
-

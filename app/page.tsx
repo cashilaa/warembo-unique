@@ -1,203 +1,238 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 export default function Home() {
+  const stats = [
+    { number: '1000+', label: 'Lives Impacted' },
+    { number: '50+', label: 'Community Programs' },
+    { number: '10+', label: 'Years Experience' },
+    { number: '100+', label: 'Partners Worldwide' }
+  ]
+
+  const services = [
+    {
+      title: 'Health Services',
+      description: 'Comprehensive healthcare support, including medical check-ups, STI screening, mental health counseling, and holistic wellness programs.',
+      icon: '🏥',
+      link: '/services/health'
+    },
+    {
+      title: 'Legal Protection',
+      description: 'Professional legal assistance, rights education, protection from discrimination, and advocacy for decriminalization and worker safety.',
+      icon: '⚖️',
+      link: '/services/legal'
+    },
+    {
+      title: 'Skills & Education',
+      description: 'Empowerment through skill development, vocational training, financial literacy, and alternative career pathway programs.',
+      icon: '📚',
+      link: '/services/education'
+    },
+    {
+      title: 'Community Support',
+      description: 'Safe spaces, peer support networks, counseling, crisis intervention, and resources for personal and professional growth.',
+      icon: '🤝',
+      link: '/services/community'
+    }
+  ]
+
+  const testimonials = [
+    {
+      quote: "This organization gave me hope when I thought I had none. They didn't just provide support; they helped me rebuild my life.",
+      name: "Maria S.",
+      role: "Community Member"
+    },
+    {
+      quote: "The legal aid and health services have been life-changing. I feel safer and more empowered than ever before.",
+      name: "Alex T.",
+      role: "Advocate"
+    }
+  ]
+
+  const keyInitiatives = [
+    {
+      title: "Rights Awareness Campaign",
+      description: "Educating the public and policymakers about sex workers' rights and challenging stigma.",
+      icon: "❤️"
+    },
+    {
+      title: "Health Access Program",
+      description: "Providing free and confidential health screenings and mental health support.",
+      icon: "❤️"
+    },
+    {
+      title: "Skills Empowerment",
+      description: "Offering vocational training and career development resources.",
+      icon: "💪"
+    }
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <motion.section 
-          className="text-center py-16 animate-fade-in"
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-        >
-          <motion.h1 
-            variants={fadeIn}
-            className="text-5xl font-bold text-gray-800 mb-6"
+    <main>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="hero-content"
           >
-            Welcome to WaremboUniqueOrg
-          </motion.h1>
-          <motion.p 
-            variants={fadeIn}
-            className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
-          >
-            Empowering individuals through advocacy, resources, and community support. Together, we can create a world of equality and respect.
-          </motion.p>
-          <motion.div 
-            variants={fadeIn}
-            className="flex gap-4 justify-center"
-          >
-            <Link 
-              href="/about"
-              className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-300 inline-block font-medium btn btn-primary"
-            >
-              Learn About Us
-            </Link>
-            <Link 
-              href="/contact"
-              className="bg-white text-teal-600 border-2 border-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition-colors duration-300 inline-block font-medium btn btn-secondary"
-            >
-              Get Involved
-            </Link>
+            <h1>Dignity, Safety, and Empowerment for All</h1>
+            <p>
+              We are a dedicated organization committed to supporting, protecting, 
+              and empowering sex workers through comprehensive services, advocacy, 
+              and community-driven initiatives.
+            </p>
+            <div className="hero-cta">
+              <Link href="/about" className="btn btn-primary">
+                Our Mission
+              </Link>
+              <Link href="/contact" className="btn btn-secondary">
+                Get Support
+              </Link>
+            </div>
           </motion.div>
-        </motion.section>
+        </div>
+      </section>
 
-        <motion.section 
-          className="py-16"
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-        >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-3xl font-bold text-gray-800 mb-12 text-center"
-          >
-            Our Impact
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card stat-card animate-fade-in"
-            >
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl text-teal-600 stat-number">5000+</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">Individuals Supported</h3>
-              <p className="text-gray-600 text-center">Making a difference in our community</p>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card stat-card animate-fade-in" style={{ animationDelay: '0.2s' }}
-            >
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl text-teal-600 stat-number">200+</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">Events Organized</h3>
-              <p className="text-gray-600 text-center">Creating opportunities for connection and growth</p>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card stat-card animate-fade-in" style={{ animationDelay: '0.4s' }}
-            >
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl text-teal-600 stat-number">50+</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">Policy Changes Influenced</h3>
-              <p className="text-gray-600 text-center">Advocating for a more just and equitable society</p>
-            </motion.div>
+      {/* Impact Stats */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="stat-card"
+              >
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        <motion.section 
-          className="py-16"
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-        >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-3xl font-bold text-gray-800 mb-8 text-center"
+      {/* Services Section */}
+      <section className="services-section">
+        <div className="container">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="section-title"
           >
-            Our Mission in Action
+            Comprehensive Support Services
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-slide-in"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Upcoming Workshop: Know Your Rights</h3>
-              <p className="text-gray-600 mb-4">Join us for our monthly workshop on legal rights and safety. Learn about your rights, how to protect yourself, and connect with community resources.</p>
-              <Link href="/events" className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center btn btn-primary">Learn More →</Link>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-slide-in" style={{ animationDelay: '0.2s' }}
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Community Support Program Expanded</h3>
-              <p className="text-gray-600 mb-4">We're excited to announce the expansion of our community support program, now offering more resources and services to those in need.</p>
-              <Link href="/services" className="text-teal-600 hover:text-teal-700 font-medium inline-flex items-center btn btn-primary">Explore Services →</Link>
-            </motion.div>
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="service-card"
+              >
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <Link href={service.link} className="service-link">
+                  Learn More
+                </Link>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        <motion.section 
-          className="py-16"
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-        >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-3xl font-bold text-gray-800 mb-8 text-center"
+      {/* Key Initiatives */}
+      <section className="initiatives-section">
+        <div className="container">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="section-title"
           >
-            Get Involved
+            Our Key Initiatives
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-fade-in"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Volunteer</h3>
-              <p className="text-gray-600 mb-4">Join our team of dedicated volunteers and make a real difference in your community. We have opportunities for all skills and availability.</p>
-              <Link href="/volunteer" className="text-teal-600 hover:text-teal-700 font-medium btn btn-primary">Become a Volunteer</Link>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-fade-in" style={{ animationDelay: '0.2s' }}
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Donate</h3>
-              <p className="text-gray-600 mb-4">Your financial support helps us continue our vital work. Every contribution, no matter how small, makes a difference in the lives of those we serve.</p>
-              <Link href="/donate" className="text-teal-600 hover:text-teal-700 font-medium btn btn-secondary">Make a Donation</Link>
-            </motion.div>
+          <div className="initiatives-grid">
+            {keyInitiatives.map((initiative, index) => (
+              <motion.div
+                key={initiative.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="initiative-card"
+              >
+                <div className="initiative-icon">{initiative.icon}</div>
+                <h3>{initiative.title}</h3>
+                <p>{initiative.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        <motion.section 
-          className="py-16"
-          initial="initial"
-          animate="animate"
-          variants={stagger}
-        >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-3xl font-bold text-gray-800 mb-8 text-center"
+      {/* Testimonials */}
+      <section className="testimonials-section">
+        <div className="container">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="section-title"
           >
-            Testimonials
+            Voices of Empowerment
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-slide-in"
-            >
-              <p className="text-gray-600 mb-4 italic">"WaremboUniqueOrg has been a lifeline for me. Their support and resources have helped me reclaim my life and find my voice."</p>
-              <p className="text-teal-600 font-medium stat-number">- Sarah M.</p>
-            </motion.div>
-            <motion.div 
-              variants={fadeIn}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 card animate-slide-in" style={{ animationDelay: '0.2s' }}
-            >
-              <p className="text-gray-600 mb-4 italic">"The community I've found through WaremboUniqueOrg is unlike any other. It's a place of acceptance, growth, and empowerment."</p>
-              <p className="text-teal-600 font-medium stat-number">- Alex T.</p>
-            </motion.div>
+          <div className="testimonials-grid">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="testimonial-card"
+              >
+                <p className="testimonial-quote">"{testimonial.quote}"</p>
+                <div className="testimonial-author">
+                  <span className="testimonial-name">{testimonial.name}</span>
+                  <span className="testimonial-role">{testimonial.role}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
-      </div>
-    </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="cta-card"
+          >
+            <h2>Be the Change</h2>
+            <p>
+              Your support can transform lives. Whether through volunteering, 
+              donation, or spreading awareness, you can make a meaningful impact.
+            </p>
+            <div className="cta-buttons">
+              <Link href="/donate" className="btn btn-primary">
+                Donate Now
+              </Link>
+              <Link href="/volunteer" className="btn btn-secondary">
+                Volunteer
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   )
 }

@@ -2,50 +2,101 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 const images = [
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Community event', caption: 'Annual community gathering' },
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Workshop', caption: 'Skills development workshop' },
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Advocacy', caption: 'Advocacy march for rights' },
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Support group', caption: 'Weekly support group meeting' },
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Fundraiser', caption: 'Charity fundraiser event' },
-  { src: '/placeholder.svg?height=300&width=400', alt: 'Education', caption: 'Public education campaign' },
+  { 
+    src: '/gallery/community-event.jpg', 
+    alt: 'Community event', 
+    caption: 'Annual community gathering',
+    category: 'Community'
+  },
+  { 
+    src: '/gallery/workshop.jpg', 
+    alt: 'Workshop', 
+    caption: 'Skills development workshop',
+    category: 'Education'
+  },
+  { 
+    src: '/gallery/advocacy.jpg', 
+    alt: 'Advocacy', 
+    caption: 'Advocacy march for rights',
+    category: 'Activism'
+  },
+  { 
+    src: '/gallery/support-group.jpg', 
+    alt: 'Support group', 
+    caption: 'Weekly support group meeting',
+    category: 'Support'
+  },
+  { 
+    src: '/gallery/fundraiser.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Charity fundraiser event',
+    category: 'Fundraising'
+  },
+  { 
+    src: '/gallery/education.jpg', 
+    alt: 'Education', 
+    caption: 'Public education campaign',
+    category: 'Education'
+  },
 ]
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [filter, setFilter] = useState('All')
+
+  const categories = ['All', ...new Set(images.map(img => img.category))]
+
+  const filteredImages = filter === 'All' 
+    ? images 
+    : images.filter(img => img.category === filter)
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container section">
       <motion.h1 
-        className="text-4xl font-bold mb-8 text-teal-700 text-center"
+        className="text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Gallery
+        Our Gallery
       </motion.h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {images.map((image, index) => (
+      <div className="gallery-filter">
+        {categories.map(category => (
+          <button 
+            key={category}
+            className={`gallery-filter-tag ${filter === category ? 'active' : ''}`}
+            onClick={() => setFilter(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      
+      <div className="gallery-grid">
+        {filteredImages.map((image, index) => (
           <motion.div 
             key={index}
+            className="gallery-item"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative cursor-pointer"
-            onClick={() => setSelectedImage(index)}
+            onClick={() => setSelectedImage(images.indexOf(image))}
           >
-            <Image 
-              src={image.src} 
-              alt={image.alt} 
-              width={400} 
-              height={300} 
-              className="rounded-lg shadow-lg"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
-              <p>{image.caption}</p>
+            <div className="gallery-item-image">
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="gallery-image" 
+              />
+              <div className="gallery-item-overlay">
+                <span className="gallery-item-category">{image.category}</span>
+              </div>
+            </div>
+            <div className="gallery-item-caption">
+              {image.caption}
             </div>
           </motion.div>
         ))}
@@ -53,27 +104,30 @@ export default function Gallery() {
 
       {selectedImage !== null && (
         <motion.div 
+          className="gallery-lightbox"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative">
-            <Image 
+          <div className="gallery-lightbox-content">
+            <button 
+              className="gallery-lightbox-close"
+              onClick={() => setSelectedImage(null)}
+            >
+              &#10005;
+            </button>
+            <img 
               src={images[selectedImage].src} 
               alt={images[selectedImage].alt} 
-              width={800} 
-              height={600} 
-              className="rounded-lg"
+              className="gallery-lightbox-image" 
             />
-            <p className="absolute bottom-4 left-4 right-4 text-white text-center bg-black bg-opacity-50 p-2 rounded">
+            <div className="gallery-lightbox-caption">
               {images[selectedImage].caption}
-            </p>
+            </div>
           </div>
         </motion.div>
       )}
     </div>
   )
 }
-
