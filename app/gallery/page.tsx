@@ -17,6 +17,12 @@ const images = [
     category: 'Education'
   },
   { 
+    src: '/warembo11.jpg', 
+    alt: 'Workshop', 
+    caption: 'Skills development workshop',
+    category: 'Education'
+  },
+  { 
     src: '/warembo28.jpg', 
     alt: 'Advocacy', 
     caption: 'Advocacy march for rights',
@@ -39,6 +45,54 @@ const images = [
     alt: 'Education', 
     caption: 'Public education campaign',
     category: 'Education'
+  },
+  { 
+    src: '/warembo24.jpg', 
+    alt: 'Education', 
+    caption: 'Public education campaign',
+    category: 'Education'
+  },
+  { 
+    src: '/warembo25.jpg', 
+    alt: 'Education', 
+    caption: 'Public education campaign',
+    category: 'Education'
+  },
+  { 
+    src: '/warembo5.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
+  },
+  { 
+    src: '/warembo6.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
+  },
+  { 
+    src: '/warembo7.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
+  },
+  { 
+    src: '/warembo8.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
+  },
+  { 
+    src: '/warembo10.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
+  },
+  { 
+    src: '/warembo4.jpg', 
+    alt: 'Fundraiser', 
+    caption: 'Beadwork',
+    category: 'Beadwork'
   },
 ]
 
