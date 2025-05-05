@@ -11,6 +11,12 @@ const images = [
     category: 'Community'
   },
   { 
+    src: '/warembo15.jpg', 
+    alt: 'Community event', 
+    caption: 'Annual community gathering',
+    category: 'Community'
+  },
+  { 
     src: '/warembo14.jpg', 
     alt: 'Workshop', 
     caption: 'Skills development workshop',

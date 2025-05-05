@@ -1,73 +1,90 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import Image from 'next/image'
+import { motion } from "framer-motion"
+import Link from "next/link"
+import Image from "next/image"
+import { useEffect, useRef } from "react"
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    // Force video reload on component mount
+    if (videoRef.current) {
+      const video = videoRef.current
+      video.load()
+    }
+  }, [])
+
   const stats = [
-    { number: '1000+', label: 'Lives Impacted' },
-    { number: '50+', label: 'Community Programs' },
-    { number: '10+', label: 'Years Experience' },
-    { number: '100+', label: 'Partners Worldwide' }
+    { number: "1000+", label: "Lives Impacted" },
+    { number: "50+", label: "Community Programs" },
+    { number: "10+", label: "Years Experience" },
+    { number: "100+", label: "Partners Worldwide" },
   ]
 
   const services = [
     {
-      title: 'Health Services',
-      description: 'Comprehensive healthcare support, including medical check-ups, STI screening, mental health counseling, and holistic wellness programs.',
-      icon: '🏥',
-      link: '/services/health'
+      title: "Health Services",
+      description:
+        "Comprehensive healthcare support, including medical check-ups, STI screening, mental health counseling, and holistic wellness programs.",
+      icon: "🏥",
+      link: "/services/health",
     },
     {
-      title: 'Legal Protection',
-      description: 'Professional legal assistance, rights education, protection from discrimination, and advocacy for decriminalization and worker safety.',
-      icon: '⚖️',
-      link: '/services/legal'
+      title: "Legal Protection",
+      description:
+        "Professional legal assistance, rights education, protection from discrimination, and advocacy for decriminalization and worker safety.",
+      icon: "⚖️",
+      link: "/services/legal",
     },
     {
-      title: 'Skills & Education',
-      description: 'Empowerment through skill development, vocational training, financial literacy, and alternative career pathway programs.',
-      icon: '📚',
-      link: '/services/education'
+      title: "Skills & Education",
+      description:
+        "Empowerment through skill development, vocational training, financial literacy, and alternative career pathway programs.",
+      icon: "📚",
+      link: "/services/education",
     },
     {
-      title: 'Community Support',
-      description: 'Safe spaces, peer support networks, counseling, crisis intervention, and resources for personal and professional growth.',
-      icon: '🤝',
-      link: '/services/community'
-    }
+      title: "Community Support",
+      description:
+        "Safe spaces, peer support networks, counseling, crisis intervention, and resources for personal and professional growth.",
+      icon: "🤝",
+      link: "/services/community",
+    },
   ]
 
   const testimonials = [
     {
-      quote: "This organization gave me hope when I thought I had none. They didn't just provide support; they helped me rebuild my life.",
+      quote:
+        "This organization gave me hope when I thought I had none. They didn't just provide support; they helped me rebuild my life.",
       name: "Maria S.",
-      role: "Community Member"
+      role: "Community Member",
     },
     {
-      quote: "The legal aid and health services have been life-changing. I feel safer and more empowered than ever before.",
+      quote:
+        "The legal aid and health services have been life-changing. I feel safer and more empowered than ever before.",
       name: "Alex T.",
-      role: "Advocate"
-    }
+      role: "Advocate",
+    },
   ]
 
   const keyInitiatives = [
     {
       title: "Rights Awareness Campaign",
       description: "Educating the public and policymakers about sex workers' rights and challenging stigma.",
-      icon: "👥"
+      icon: "👥",
     },
     {
       title: "Health Access Program",
       description: "Providing free and confidential health screenings and mental health support.",
-      icon: "❤️"
+      icon: "❤️",
     },
     {
       title: "Skills Empowerment",
       description: "Offering vocational training and career development resources.",
-      icon: "💪"
-    }
+      icon: "💪",
+    },
   ]
 
   return (
@@ -83,9 +100,8 @@ export default function Home() {
           >
             <h1>Dignity, Safety, and Empowerment for All</h1>
             <p>
-              We are a dedicated organization committed to supporting, protecting, 
-              and empowering sex workers through comprehensive services, advocacy, 
-              and community-driven initiatives.
+              We are a dedicated organization committed to supporting, protecting, and empowering sex workers through
+              comprehensive services, advocacy, and community-driven initiatives.
             </p>
             <div className="hero-cta">
               <Link href="/about" className="btn btn-primary">
@@ -96,6 +112,49 @@ export default function Home() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Community Image Section */}
+      <section className="community-image-section py-12">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="image-container"
+            >
+              <Image
+                src="/warembo11.jpg?height=400&width=600"
+                alt="Our community coming together"
+                width={600}
+                height={400}
+                className="rounded-xl shadow-lg object-cover w-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="community-content"
+            >
+              <h3 className="text-2xl font-bold mb-4">Our Community</h3>
+              <p className="mb-4">
+                At Warembo Unique, we believe in the power of community. Our gatherings bring together individuals from
+                all walks of life, creating a supportive environment where everyone can thrive.
+              </p>
+              <p className="mb-4">
+                Through our community programs, we foster connections, build trust, and create opportunities for growth
+                and empowerment. Together, we work towards a future where everyone is treated with dignity and respect.
+              </p>
+              <p>
+                Our community members support each other through challenges and celebrate successes together, creating a
+                network of care that extends beyond our physical spaces.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -119,14 +178,89 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Beadwork Video Section */}
+      <section className="beadwork-section py-16">
+        <div className="container">
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-title text-center mb-8">
+            Our Beadwork Program
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="video-container"
+            >
+              <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-lg">
+                <video ref={videoRef} controls preload="auto" className="w-full h-full object-cover">
+                  <source src="/warembo34.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="beadwork-content"
+            >
+              <h3 className="text-2xl font-bold mb-4">Traditional Beadwork Skills</h3>
+              <p className="mb-4">
+                Our beadwork program is a cornerstone of our skills development initiative, preserving cultural heritage
+                while creating economic opportunities. Participants learn traditional beading techniques passed down
+                through generations.
+              </p>
+              <p className="mb-4">
+                Through this program, we not only teach valuable crafting skills but also provide a therapeutic creative
+                outlet and a path to financial independence. The intricate beadwork pieces created by our community
+                members are sold in local markets and through our online store.
+              </p>
+              <p>
+                Each piece tells a story of resilience, creativity, and cultural pride. The income generated supports
+                the artisans and helps fund our community programs.
+              </p>
+              <Link href="/services/beadwork" className="btn btn-primary mt-6 inline-block">
+                Learn More About Beadwork
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="beadwork-image-container mt-12 grid md:grid-cols-2 gap-8 items-center"
+          >
+            <div>
+              <Image
+                src="/warembo16.jpg?height=400&width=600"
+                alt="Community members creating beadwork"
+                width={600}
+                height={400}
+                className="rounded-xl shadow-lg object-cover w-full"
+              />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">The Art of Beadwork</h3>
+              <p className="mb-4">
+                Beadwork is more than just a craft—it's an art form that connects our community to their cultural roots
+                while providing sustainable income opportunities.
+              </p>
+              <p>
+                Our skilled artisans create beautiful beadwork pieces that celebrate our cultural heritage and showcase
+                the incredible talent within our community.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="services-section">
         <div className="container">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="section-title"
-          >
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-title">
             Comprehensive Support Services
           </motion.h2>
           <div className="services-grid">
@@ -153,11 +287,7 @@ export default function Home() {
       {/* Key Initiatives */}
       <section className="initiatives-section">
         <div className="container">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="section-title"
-          >
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-title">
             Our Key Initiatives
           </motion.h2>
           <div className="initiatives-grid">
@@ -181,11 +311,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="testimonials-section">
         <div className="container">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="section-title"
-          >
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-title">
             Voices of Empowerment
           </motion.h2>
           <div className="testimonials-grid">
@@ -219,8 +345,8 @@ export default function Home() {
           >
             <h2>Be the Change</h2>
             <p>
-              Your support can transform lives. Whether through volunteering, 
-              donation, or spreading awareness, you can make a meaningful impact.
+              Your support can transform lives. Whether through volunteering, donation, or spreading awareness, you can
+              make a meaningful impact.
             </p>
             <div className="cta-buttons">
               <Link href="/donate" className="btn btn-primary">
