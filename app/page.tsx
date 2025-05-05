@@ -221,9 +221,7 @@ export default function Home() {
                 Each piece tells a story of resilience, creativity, and cultural pride. The income generated supports
                 the artisans and helps fund our community programs.
               </p>
-              <Link href="/services/beadwork" className="btn btn-primary mt-6 inline-block">
-                Learn More About Beadwork
-              </Link>
+              {/* Link removed as requested */}
             </motion.div>
           </div>
 
@@ -349,10 +347,7 @@ export default function Home() {
               make a meaningful impact.
             </p>
             <div className="cta-buttons">
-              <Link href="/donate" className="btn btn-primary">
-                Donate Now
-              </Link>
-              <Link href="/volunteer" className="btn btn-secondary">
+              <Link href="/contact" className="btn btn-secondary">
                 Volunteer
               </Link>
             </div>
