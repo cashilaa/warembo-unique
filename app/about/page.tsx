@@ -135,12 +135,12 @@ export default function About() {
                 className="card p-6"
               >
                 <div className="flex flex-col md:flex-row items-center gap-6">
-                  <div className="relative w-48 h-48 rounded-full overflow-hidden shrink-0">
+                  <div className="relative w-36 h-36 rounded-full overflow-hidden shrink-0">
                     <Image
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
-                      width={192}
-                      height={192}
+                      width={100}
+                      height={100}
                       className="object-cover"
                       style={{ width: "100%", height: "100%" }}
                     />

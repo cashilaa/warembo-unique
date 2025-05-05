@@ -126,7 +126,7 @@ export default function Home() {
               className="image-container"
             >
               <Image
-                src="/warembo11.jpg?height=400&width=600"
+                src="/warembo15.jpg?height=400&width=600"
                 alt="Our community coming together"
                 width={600}
                 height={400}
