@@ -5,37 +5,37 @@ import { motion } from 'framer-motion'
 
 const images = [
   { 
-    src: '/gallery/community-event.jpg', 
+    src: '/warembo21.jpg', 
     alt: 'Community event', 
     caption: 'Annual community gathering',
     category: 'Community'
   },
   { 
-    src: '/gallery/workshop.jpg', 
+    src: '/warembo14.jpg', 
     alt: 'Workshop', 
     caption: 'Skills development workshop',
     category: 'Education'
   },
   { 
-    src: '/gallery/advocacy.jpg', 
+    src: '/warembo28.jpg', 
     alt: 'Advocacy', 
     caption: 'Advocacy march for rights',
     category: 'Activism'
   },
   { 
-    src: '/gallery/support-group.jpg', 
+    src: '/warembo13.jpg', 
     alt: 'Support group', 
     caption: 'Weekly support group meeting',
     category: 'Support'
   },
   { 
-    src: '/gallery/fundraiser.jpg', 
+    src: '/warembo3.jpg', 
     alt: 'Fundraiser', 
-    caption: 'Charity fundraiser event',
-    category: 'Fundraising'
+    caption: 'Beadwork',
+    category: 'Beadwork'
   },
   { 
-    src: '/gallery/education.jpg', 
+    src: '/warembo15.jpg', 
     alt: 'Education', 
     caption: 'Public education campaign',
     category: 'Education'

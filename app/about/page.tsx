@@ -6,22 +6,16 @@ import Image from 'next/image'
 export default function About() {
   const team = [
     {
-      name: 'Sarah Johnson',
+      name: 'Margaret Wamaitha',
       role: 'Executive Director',
       bio: 'With over 15 years of experience in community advocacy.',
-      image: '/team/sarah.jpg'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Program Director',
-      bio: 'Dedicated to creating impactful community programs.',
-      image: '/team/michael.jpg'
+      image: '/warembo 1.jpg'
     },
     {
       name: 'Lisa Thompson',
       role: 'Outreach Coordinator',
       bio: 'Passionate about connecting with and supporting community members.',
-      image: '/team/lisa.jpg'
+      image: '/warembo 2.jpg'
     }
   ]
 
@@ -149,7 +143,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="card text-center"
               >
-                <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                <div className="relative w-64 h-64 mx-auto mb-4 rounded-full overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -157,9 +151,9 @@ export default function About() {
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
-                <h3>{member.name}</h3>
+                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                 <div className="text-lg font-medium mb-2">{member.role}</div>
-                <p>{member.bio}</p>
+                <p className="text-sm">{member.bio}</p>
               </motion.div>
             ))}
           </div>

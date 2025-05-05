@@ -1,42 +1,29 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion } from "framer-motion"
 
 export default function Contact() {
-  const [formStatus, setFormStatus] = useState('')
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormStatus('sending')
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success')
-    }, 1000)
-  }
-
   const contactInfo = [
     {
-      title: 'Visit Us',
-      details: 'Nairobi, Kenya',
-      icon: '📍'
+      title: "Visit Us",
+      details: "Nairobi, Kenya",
+      icon: "📍",
     },
     {
-      title: 'Call Us',
-      details: '+254 123 456 789',
-      icon: '📞'
+      title: "Call Us",
+      details: "+254 720 340781",
+      icon: "📞",
     },
     {
-      title: 'Email Us',
-      details: 'contact@warembo.org',
-      icon: '✉️'
+      title: "Email Us",
+      details: "warembounique1981@gmail.com",
+      icon: "✉️",
     },
     {
-      title: 'Hours',
-      details: 'Mon-Fri: 9am - 5pm',
-      icon: '🕒'
-    }
+      title: "Hours",
+      details: "Mon-Fri: 9am - 5pm",
+      icon: "🕒",
+    },
   ]
 
   return (
@@ -51,9 +38,7 @@ export default function Contact() {
             className="text-center"
           >
             <h1>Contact Us</h1>
-            <p className="text-lg mb-8">
-              We're here to help. Reach out to us with any questions or concerns.
-            </p>
+            <p className="text-lg mb-8">We're here to help. Reach out to us with any questions or concerns.</p>
           </motion.div>
         </div>
       </section>
@@ -82,83 +67,37 @@ export default function Contact() {
       {/* Contact Form Section */}
       <section className="section">
         <div className="container">
-          <div className="grid grid-2">
+          <div className="flex justify-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="card"
+              className="card max-w-2xl w-full"
             >
-              <h2>Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="form-group">
-                  <label htmlFor="name" className="form-label">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="form-input"
-                    placeholder="Your name"
-                  />
-                </div>
+              <h2 className="text-center">Contact Us Directly</h2>
+              <p className="mb-6 text-center">If you need assistance, please contact us using the information below:</p>
 
-                <div className="form-group">
-                  <label htmlFor="email" className="form-label">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="form-input"
-                    placeholder="Your email"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    className="form-input"
-                    rows={5}
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  className="btn btn-primary w-full"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={formStatus === 'sending'}
-                >
-                  {formStatus === 'sending' ? 'Sending...' :
-                   formStatus === 'success' ? 'Message Sent!' :
-                   'Send Message'}
-                </motion.button>
-              </form>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="card"
-            >
-              <h2>Emergency Support</h2>
-              <p className="mb-6">
-                If you need immediate assistance, please contact our 24/7 helpline:
-              </p>
-              <div className="text-center">
-                <div className="text-4xl mb-4">📞</div>
-                <h3 className="text-xl font-bold mb-2">Helpline</h3>
-                <p className="text-2xl text-primary">+254 789 012 345</p>
+              <div className="text-center mb-8">
+                <div className="text-4xl mb-4">✉️</div>
+                <h3 className="text-xl font-bold mb-2">Email</h3>
+                <p className="text-xl text-primary">warembounique1981@gmail.com</p>
               </div>
+
+              <div className="text-center mb-8">
+                <div className="text-4xl mb-4">📞</div>
+                <h3 className="text-xl font-bold mb-2">Phone</h3>
+                <p className="text-xl text-primary">+254 720 340781</p>
+              </div>
+
+              <div className="text-center">
+                <div className="text-4xl mb-4">🚨</div>
+                <h3 className="text-xl font-bold mb-2">Emergency Support</h3>
+                <p className="text-xl text-primary">+254 789 012 345</p>
+              </div>
+
               <div className="mt-8">
-                <h3 className="mb-4">Additional Resources</h3>
-                <ul className="space-y-2">
+                <h3 className="mb-4 text-center">Additional Resources</h3>
+                <ul className="space-y-2 max-w-md mx-auto">
                   <li>• Emergency Services: 999</li>
                   <li>• Crisis Hotline: 116</li>
                   <li>• Women's Rights Helpline: +254 700 000 000</li>

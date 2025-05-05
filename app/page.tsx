@@ -56,7 +56,7 @@ export default function Home() {
     {
       title: "Rights Awareness Campaign",
       description: "Educating the public and policymakers about sex workers' rights and challenging stigma.",
-      icon: "❤️"
+      icon: "👥"
     },
     {
       title: "Health Access Program",

@@ -5,18 +5,14 @@ import { motion } from 'framer-motion'
 
 const Footer = () => {
   const quickLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/services', label: 'What We Offer' },
     { href: '/contact', label: 'Contact Us' },
     { href: '/faq', label: 'FAQ' },
-    { href: '/blog', label: 'Blog' },
     { href: '/gallery', label: 'Gallery' }
   ]
 
   const contactInfo = [
-    { label: 'Email', value: 'contact@warembo.org' },
-    { label: 'Phone', value: '+254 123 456 789' },
+    { label: 'Email', value: 'warembounique1981@gmail.com' },
+    { label: 'Phone', value: '+254 720 340781' },
     { label: 'Address', value: 'Nairobi, Kenya' }
   ]
 
